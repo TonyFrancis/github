@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { onSearchChange } from './actions/searchAndFilter';
+import { onSearchChange, onFilterChange } from './actions/searchAndFilter';
 import RepoList from './components/LayOut/RepoList';
 import './App.css';
 
@@ -21,7 +21,12 @@ import './App.css';
 // }
 
 class App extends Component {
+
+
   render() {
+    let filterSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected";
+    let filterNotSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray";
+    const { filter } = this.props.searchAndFilter; 
     return (
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
 
@@ -39,11 +44,11 @@ class App extends Component {
     onChange={ e => this.props.onSearchChange(e.target.value)}
     />
   <ul className="repo-filterer">
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected" href="https://github.com/dashboard" data-ga-click="Dashboard, click, Repo list filter - context:user filter:all">All</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray" href="https://github.com/dashboard?privacy=PUBLIC" data-ga-click="Dashboard, click, Repo list filter - context:user filter:public">Public</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray" href="https://github.com/dashboard?privacy=PRIVATE" data-ga-click="Dashboard, click, Repo list filter - context:user filter:private">Private</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray" href="https://github.com/dashboard?fork=0" data-ga-click="Dashboard, click, Repo list filter - context:user filter:sources">Sources</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray" href="https://github.com/dashboard?fork=1" data-ga-click="Dashboard, click, Repo list filter - context:user filter:forks">Forks</a></li>
+    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'ALL' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('ALL')}>All</a></li>
+    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PUBLIC' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PUBLIC')}>Public</a></li>
+    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PRIVATE' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PRIVATE')}>Private</a></li>
+    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'CREATED' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('CREATED')}>Sources</a></li>
+    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'FORK' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('FORK')}>Forks</a></li>
   </ul>
 </div>
 
@@ -66,7 +71,8 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-  onSearchChange
+  onSearchChange,
+  onFilterChange,
 }
 
 App = connect(mapStateToProps, mapDispatchToProps)(App);

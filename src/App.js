@@ -29,38 +29,31 @@ class App extends Component {
     const { filter } = this.props.searchAndFilter;
     return (
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
-
-<div className="boxed-group flush repos user-repos" role="navigation">
-  <div className="boxed-group-action">
-    <a href="/new" className="btn btn-sm btn-primary" data-ga-click="Dashboard, click, Sidebar header new repo button - context:user">New repository</a>
-  </div>
-  <h3>
-    Your repositories
-    <span className="Counter">{this.props.github.length}</span>
-  </h3>
-  <div className="boxed-group-inner">
-    <div className="filter-repos filter-bar" role="search">
-  <input type="text" value={this.props.searchAndFilter.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
-    onChange={ e => this.props.onSearchChange(e.target.value)}
-    />
-  <ul className="repo-filterer">
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'ALL' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('ALL')}>All</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PUBLIC' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PUBLIC')}>Public</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PRIVATE' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PRIVATE')}>Private</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'CREATED' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('CREATED')}>Sources</a></li>
-    <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'FORK' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('FORK')}>Forks</a></li>
-  </ul>
-</div>
-
-<RepoList />
-
-
-
-
-  </div>
-</div>
-
+        <div className="boxed-group flush repos user-repos" role="navigation">
+          <div className="boxed-group-action">
+            <a className="btn btn-sm btn-primary" data-ga-click="Dashboard, click, Sidebar header new repo button - context:user">New repository</a>
+          </div>
+          <h3>
+            Your repositories
+            <span className="Counter">{this.props.github.length}</span>
+          </h3>
+          <div className="boxed-group-inner">
+            <div className="filter-repos filter-bar" role="search">
+              <input type="text" value={this.props.searchAndFilter.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
+                onChange={ e => this.props.onSearchChange(e.target.value)}
+                />
+              <ul className="repo-filterer">
+                <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'ALL' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('ALL')}>All</a></li>
+                <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PUBLIC' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PUBLIC')}>Public</a></li>
+                <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'PRIVATE' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('PRIVATE')}>Private</a></li>
+                <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'CREATED' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('CREATED')}>Sources</a></li>
+                <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'FORK' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('FORK')}>Forks</a></li>
+              </ul>
+            </div>
+            <RepoList />
+          </div>
         </div>
+      </div>
     )
   }
 }

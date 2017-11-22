@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     let filterSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected";
     let filterNotSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray";
-    const { filter } = this.props.searchAndFilter; 
+    const { filter } = this.props.searchAndFilter;
     return (
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
 
@@ -36,7 +36,7 @@ class App extends Component {
   </div>
   <h3>
     Your repositories
-    <span className="Counter">40</span>
+    <span className="Counter">{this.props.github.length}</span>
   </h3>
   <div className="boxed-group-inner">
     <div className="filter-repos filter-bar" role="search">
@@ -65,9 +65,10 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  const searchAndFilter = state.searchAndFilter;
+  const { github, searchAndFilter}  = state;
   return {
     searchAndFilter,
+    github,
   };
 };
 const mapDispatchToProps = {

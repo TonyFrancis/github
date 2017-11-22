@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { onSearchChange } from './actions/search';
+import { onSearchChange } from './actions/searchAndFilter';
 import RepoList from './components/LayOut/RepoList';
 import './App.css';
 
@@ -22,7 +22,6 @@ import './App.css';
 
 class App extends Component {
   render() {
-    console.log(this.props)
     return (
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
 
@@ -36,7 +35,7 @@ class App extends Component {
   </h3>
   <div className="boxed-group-inner">
     <div className="filter-repos filter-bar" role="search">
-  <input type="text" value={this.props.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
+  <input type="text" value={this.props.searchAndFilter.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
     onChange={ e => this.props.onSearchChange(e.target.value)}
     />
   <ul className="repo-filterer">
@@ -61,9 +60,9 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  const search = state.search;
+  const searchAndFilter = state.searchAndFilter;
   return {
-    search,
+    searchAndFilter,
   };
 };
 const mapDispatchToProps = {

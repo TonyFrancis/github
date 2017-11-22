@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import github from './github';
-import search from './search';
+import searchAndFilter from './searchAndFilter';
 
 const reducers = combineReducers({
   github,
-  search
+  searchAndFilter
 });
 
 export default reducers;

@@ -10,8 +10,10 @@ class RepoList extends Component {
     this.state = {}
   }
   render() {
-    console.log(this.props.github)
-    const listItems = this.props.github.map((elem) => (
+    const listItems = this.props.github
+      .filter(elem => elem.title.toLowerCase().indexOf(this.props.searchAndFilter.search.toLowerCase()) !== -1)  // filter search
+      .map((elem) => (
+        // creating component
       <ListItem
         key={elem.id}
         isPublic={elem.isPublic}
@@ -77,9 +79,10 @@ class RepoList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const github = state.github;
+  const { github, searchAndFilter } = state;
   return {
     github,
+    searchAndFilter
   };
 };
 const mapDispatchToProps = {

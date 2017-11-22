@@ -21,8 +21,20 @@ import './App.css';
 // }
 
 class App extends Component {
-
-
+  constructor(props){
+    super(props);
+    this.state ={};
+    this.onResponsive = this.onResponsive.bind(this);
+  }
+  onResponsive() {
+    var x = document.getElementById("myTopnav");
+    console.log("responsive")
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+  }
   render() {
     let filterSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected";
     let filterNotSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray";
@@ -58,11 +70,35 @@ class App extends Component {
       </div>
       <div className="mobile-view">
         <div className="topnav" id="myTopnav">
-          <a href="#home" className="active">Home</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
-          <a href="javascript:void(0);" style={{ fontSize:"15px"}} className="icon" >&#9776;</a>
+          <a className="active">
+            Your repositories
+            <span className="Counter">{this.props.github.length}</span>
+          </a>
+          <a className="btn btn-sm btn-primary">New repository</a>
+          <a>
+            <input
+              type="text"
+              value={this.props.searchAndFilter.search}
+              className="form-control input-sm input-block js-filterable-field js-your-repositories-search"
+              placeholder="Find a repository…"
+              onChange={ e => this.props.onSearchChange(e.target.value)}
+            />
+          </a>
+          <a>
+            <select
+              style={{width: '100%'}}
+              id="selectFilter"
+              value={filter}
+              onChange={e => this.props.onFilterChange(e.target.value)}
+            >
+              <option>ALL</option>
+              <option>PUBLIC</option>
+              <option>PRIVATE</option>
+              <option>CREATED</option>
+              <option>FORK</option>
+            </select>
+          </a>
+          <a style={{ fontSize:"15px"}} className="icon" onClick={() => this.onResponsive()}>&#9776;</a>
         </div>
           {content}
         </div>

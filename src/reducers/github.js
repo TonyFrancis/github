@@ -1,12 +1,14 @@
 const data = [
   {
-    public: false,
+    id: 1,
+    isPublic: false,
     title: 'github',
     source: 'created',
     link: '/github',
   },
   {
-    public: true,
+    id: 2,
+    isPublic: true,
     title: 'bit',
     source: 'fork',
     link: '/bit',

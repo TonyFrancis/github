@@ -4,12 +4,11 @@ import { Provider } from 'react-redux'
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom'
 import { createStore } from 'redux'
 import './index.css';
 import App from './App';
-import github from './reducers/github';
+import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
 const Hello = ({}) => (
@@ -18,7 +17,7 @@ const Hello = ({}) => (
   </div>
 )
 
-const store = createStore(github);
+const store = createStore(reducers);
 ReactDOM.render(
   <Provider store={store}>
     <Router>

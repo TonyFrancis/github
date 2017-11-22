@@ -1,4 +1,6 @@
 const GET_ALL = 'GET_ALL';
+const ON_SEARCH_CHANGE = 'ON_SEARCH_CHANGE';
 export {
   GET_ALL,
+  ON_SEARCH_CHANGE,
 };

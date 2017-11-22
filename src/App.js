@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { onSearchChange } from './actions/search';
 import RepoList from './components/LayOut/RepoList';
 import './App.css';
 
@@ -20,6 +22,7 @@ import './App.css';
 
 class App extends Component {
   render() {
+    console.log(this.props)
     return (
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
 
@@ -33,7 +36,9 @@ class App extends Component {
   </h3>
   <div className="boxed-group-inner">
     <div className="filter-repos filter-bar" role="search">
-  <input type="text" className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q" value="" />
+  <input type="text" value={this.props.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
+    onChange={ e => this.props.onSearchChange(e.target.value)}
+    />
   <ul className="repo-filterer">
     <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected" href="https://github.com/dashboard" data-ga-click="Dashboard, click, Repo list filter - context:user filter:all">All</a></li>
     <li><a data-pjax="" data-pjax-preserve-scroll="" className="btn-link repo-filter js-repo-filter-link text-small text-gray" href="https://github.com/dashboard?privacy=PUBLIC" data-ga-click="Dashboard, click, Repo list filter - context:user filter:public">Public</a></li>
@@ -55,6 +60,18 @@ class App extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  const search = state.search;
+  return {
+    search,
+  };
+};
+const mapDispatchToProps = {
+  onSearchChange
+}
+
+App = connect(mapStateToProps, mapDispatchToProps)(App);
+
 export default App;
 
 

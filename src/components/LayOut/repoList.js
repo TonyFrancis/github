@@ -77,7 +77,7 @@ class RepoList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const github = state;
+  const github = state.github;
   return {
     github,
   };

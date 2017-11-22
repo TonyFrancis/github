@@ -11,11 +11,14 @@ import App from './App';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const Hello = ({}) => (
-  <div>
-    Hello World
-  </div>
-)
+const Hello = (props) => {
+  const { name } = props.match.params;
+  return (
+    <div>
+      {name}
+    </div>
+  )
+}
 
 const store = createStore(reducers);
 ReactDOM.render(

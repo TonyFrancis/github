@@ -27,7 +27,9 @@ class App extends Component {
     let filterSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray filter-selected";
     let filterNotSelected = "btn-link repo-filter js-repo-filter-link text-small text-gray";
     const { filter } = this.props.searchAndFilter;
+    const content = <RepoList />
     return (
+      <div>
       <div id="your_repos" className="js-repos-container" data-pjax-container="">
         <div className="boxed-group flush repos user-repos" role="navigation">
           <div className="boxed-group-action">
@@ -50,8 +52,19 @@ class App extends Component {
                 <li><a data-pjax="" data-pjax-preserve-scroll="" className={filter === 'FORK' ? filterSelected : filterNotSelected}  onClick={() => this.props.onFilterChange('FORK')}>Forks</a></li>
               </ul>
             </div>
-            <RepoList />
+            {content}
           </div>
+        </div>
+      </div>
+      <div className="mobile-view">
+        <div className="topnav" id="myTopnav">
+          <a href="#home" className="active">Home</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="javascript:void(0);" style={{ fontSize:"15px"}} className="icon" >&#9776;</a>
+        </div>
+          {content}
         </div>
       </div>
     )

@@ -17,6 +17,7 @@ class RepoList extends Component {
         isPublic={elem.isPublic}
         title={elem.title}
         source={elem.source}
+        link={elem.link}
       />
     ))
     return (

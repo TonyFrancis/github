@@ -7,6 +7,15 @@
 
 This command will create app at `localhost:3000` make sure port 3000 is free to use.
 
+## installation
+
+```
+npm install
+```
+
+will install npm modules
+
+-------------------
 
 
 

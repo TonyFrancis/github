@@ -11,7 +11,7 @@ import App from './App';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const Hello = (props) => {
+const Repo = (props) => {
   const { name } = props.match.params;
   return (
     <div>
@@ -21,12 +21,14 @@ const Hello = (props) => {
 }
 
 const store = createStore(reducers);
+
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <span>
         <Route exact path="/" component={App} />
-        <Route path="/:name" component={Hello} />
+        <Route path="/:name" component={Repo} />
       </span>
     </Router>
   </Provider>, document.getElementById('root'));

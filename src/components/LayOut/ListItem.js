@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
+/**
+ListItem
+  List repo 
+  @arg title title of the repo
+  @arg isPublic boolean value saying private or public
+  @arg link Link to repo
+  @arg source Created or Forked by user
+**/
 const ListItem = ({title, isPublic, link, source}) => {
   let liClass = "private source";
   let iconSvg = (
@@ -26,6 +35,13 @@ const ListItem = ({title, isPublic, link, source}) => {
       </Link>
     </li>
   );
+}
+
+ListItem.propTypes = {
+  isPublic: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 }
 
 export default ListItem;

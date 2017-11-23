@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import { getAll } from '../../actions/github';
 
+/**
+  RepoList
+    Create list of repos
+    renders ul with array of li elements
+**/
 class RepoList extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +48,23 @@ class RepoList extends Component {
       </ul>
     );
   }
+}
+
+RepoList.propTypes = {
+  searchAndFilter: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired,
+  }).isRequired,
+  github: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isPublic: PropTypes.bool.isRequired,
+      title: PropTypes.string.isRequired,
+      source: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    })
+  ),
+  getAll: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {

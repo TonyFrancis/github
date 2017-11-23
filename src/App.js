@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { onSearchChange, onFilterChange } from './actions/searchAndFilter';
 import RepoList from './components/LayOut/RepoList';
 import './App.css';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
+/**
+
+  App
+  create App github which is related to media query.
+  on 500px mobile-view will be visiable
+  on click the link redirect to new page
+**/
 
 class App extends Component {
   constructor(props){
@@ -98,7 +91,7 @@ class App extends Component {
               <option>FORK</option>
             </select>
           </a>
-          <a style={{ fontSize:"15px"}} className="icon" onClick={() => this.onResponsive()}>&#9776;</a>
+          <a style={{ fontSize:"25px"}} className="icon" onClick={() => this.onResponsive()}>&#9776;</a>
         </div>
           {content}
         </div>
@@ -106,6 +99,26 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  searchAndFilter: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired,
+  }).isRequired,
+  github: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isPublic: PropTypes.bool.isRequired,
+      title: PropTypes.string.isRequired,
+      source: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    })
+  ),
+  onSearchChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+};
+
+
 const mapStateToProps = (state) => {
   const { github, searchAndFilter}  = state;
   return {

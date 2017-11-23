@@ -67,11 +67,21 @@ class App extends Component {
             Your repositories
             <span className="Counter">{this.props.github.length}</span>
           </a>
-          <a className="btn btn-sm btn-primary">New repository</a>
+          <a
+            style={{
+              fontSize: '25px'
+            }}
+            className="btn btn-primary"
+          >
+            New repository
+          </a>
           <a>
             <input
               type="text"
               value={this.props.searchAndFilter.search}
+              style={{
+                fontSize: '25px'
+              }}
               className="form-control input-sm input-block js-filterable-field js-your-repositories-search"
               placeholder="Find a repository…"
               onChange={ e => this.props.onSearchChange(e.target.value)}
@@ -79,7 +89,8 @@ class App extends Component {
           </a>
           <a>
             <select
-              style={{width: '100%'}}
+              className="select-menu-modal"
+              style={{width: '100%', fontSize: '25px'}}
               id="selectFilter"
               value={filter}
               onChange={e => this.props.onFilterChange(e.target.value)}

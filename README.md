@@ -15,6 +15,8 @@ npm install
 
 will install npm modules
 
+`Not made new repo functionality since it was not included in the pdf.`
+
 -------------------
 
 

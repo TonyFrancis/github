@@ -46,7 +46,7 @@ class App extends Component {
           </h3>
           <div className="boxed-group-inner">
             <div className="filter-repos filter-bar" role="search">
-              <input type="text" value={this.props.searchAndFilter.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabindex="2" data-url="https://github.com/" data-query-name="q"
+              <input type="text" value={this.props.searchAndFilter.search} className="form-control input-sm input-block js-filterable-field js-your-repositories-search" id="your-repos-filter" placeholder="Find a repository…" aria-label="Find a repository…" tabIndex="2" data-url="https://github.com/" data-query-name="q"
                 onChange={ e => this.props.onSearchChange(e.target.value)}
                 />
               <ul className="repo-filterer">

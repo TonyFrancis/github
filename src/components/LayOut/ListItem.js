@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
 /**
 ListItem
-  List repo 
+  List repo
   @arg title title of the repo
   @arg isPublic boolean value saying private or public
   @arg link Link to repo
